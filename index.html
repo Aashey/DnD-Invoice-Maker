@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Invoice Maker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.0/dist/interact.min.js"></script>
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="parameters">
+                <div class="label_block">
+                        <span class="block_title">
+                            Label Blocks
+                        </span>
+                    <div class="draggable_label" id="name_label">Name</div>
+                    <div class="draggable_label" id="address_label">Address</div>
+                    <div class="draggable_label" id="phone_label">Phone</div>
+                    <div class="draggable_label" id="total_label">Total</div>
+                    <div class="draggable_label" id="discount_label">Discount</div>
+                    <div class="draggable_label" id="subtotal_label">Subtotal</div>
+                </div>
+                <div class="value_block">
+                    <span class="block_title">
+                        Value Blocks
+                    </span>
+                    <div class="draggable_value" id="name_value">Name Value</div>
+                    <div class="draggable_value" id="address_value">Address Value</div>
+                    <div class="draggable_value" id="phone_value">Phone Value</div>
+                    <div class="draggable_value" id="total_value">Total Value</div>
+                    <div class="draggable_value" id="discount_value">Discount Value</div>
+                    <div class="draggable_value" id="subtotal_value">Subtotal Value</div>
+                    <div class="draggable_value" id="organization_value">Organization Name </div>
+                    <div class="draggable_value" id="organization_logo">Organization Logo </div>
+                </div>
+            </div>
+            <div class="board">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
