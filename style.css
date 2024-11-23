@@ -33,7 +33,6 @@
     background-color: rgb(211, 221, 223);
     border-radius: 4px;
     box-shadow: 0 0 5px 2px rgba(128, 128, 128, 0.171);
-    padding: 10px;
     overflow: hidden;
 }
 
@@ -58,14 +57,22 @@
     align-items: center;
     cursor: pointer;
 }
+
 .content .draggable_label:hover,
 .draggable_value:hover {
-   
+
     background-color: rgb(52, 59, 82);
-   
+
 }
 
-.board .draggable_item:active{
-user-select: none;
-padding: 2px;
+.board .draggable_item {
+    position: absolute;
+    padding: 2px;
+    user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
 }

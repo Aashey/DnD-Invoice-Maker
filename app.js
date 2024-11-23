@@ -1,17 +1,36 @@
-const position = { x: 0, y: 0 };
-
+position = { x: 0, y: 0 };
 function makeDraggable(item) {
+  let offsetX = 0;
+  let offsetY = 0;
+
   interact(item).draggable({
     listeners: {
       start(event) {
         event.target.style.zIndex = "1000";
-        console.log(event.dx, event.dy);
+
+        // Get the board's position relative to the window
+        const board = document.querySelector(".board");
+        const boardRect = board.getBoundingClientRect();
+
+        // Calculate the initial offset between the mouse position and the element's top-left corner
+        offsetX = event.clientX - event.target.getBoundingClientRect().left;
+        offsetY = event.clientY - event.target.getBoundingClientRect().top;
+
+        console.log("Start offset:", offsetX, offsetY);
       },
       move(event) {
-        position.x += event.dx;
-        position.y += event.dy;
+        // Get the board's position relative to the window
+        const board = document.querySelector(".board");
+        const boardRect = board.getBoundingClientRect();
 
-        event.target.style.transform = `translate(${position.x}px,${position.y}px)`;
+        // Calculate the new position based on the mouse position and initial offset
+        position.x = event.clientX - boardRect.left - offsetX;
+        position.y = event.clientY - boardRect.top - offsetY;
+
+        // Apply the translation relative to the board's position
+        event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
+
+        console.log("Move position:", position.x, position.y);
       },
       end(event) {
         event.target.style.zIndex = "";
@@ -30,6 +49,7 @@ function addToBoard(item) {
   block.innerText = item;
 
   board.appendChild(block);
+  makeDraggable(block);
 }
 
 document
@@ -37,6 +57,5 @@ document
   .forEach((item) => {
     item.addEventListener("click", () => {
       addToBoard(item.innerText);
-      makeDraggable(".draggable_item");
     });
   });
