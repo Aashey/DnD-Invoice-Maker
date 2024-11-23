@@ -64,3 +64,8 @@
     background-color: rgb(52, 59, 82);
    
 }
+
+.board .draggable_item:active{
+user-select: none;
+padding: 2px;
+}
